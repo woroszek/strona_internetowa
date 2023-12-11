@@ -97,25 +97,25 @@
     </div>
     <div class="container-fluid p-5 bg-dark text-white">
         <h4 class="text-center">Aktualny stan magazynu:</h4><br>
-      <table style="width:100%">
-      <thead>
-      <th scope="col">Nazwa</th>
-      <th scope="col">Ilość</th>
-      <th scope="col">Cena</th>
-      </thead>
-      <tbody>
-      <tr>
+        <table style="width:100%">
+        <thead>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Ilość</th>
+        <th scope="col">Cena</th>
+        </thead>
+        <tbody>
+        <tr>
         {% for item in history %}
-      <tr>
+        <tr>
         <td>{{ item[0] }}</td>
         <td>{{ item[1]["ilosc"] }}</td>
         <td>{{ item[1]["koszt"] }}</td>
-      </tr>
-      {% endfor %}
+        </tr>
+        {% endfor %}
 
-      </tbody>
+        </tbody>
 
-    </table>
+        </table>
     </div>
 
 

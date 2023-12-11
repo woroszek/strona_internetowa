@@ -9,9 +9,8 @@ def index():
     balance = manager.balance
     komunikat = manager.komunikat
     history = manager.warehouse
-    result = [f'{item[0]} w ilości {item[1]["ilosc"]} w cenie {item[1]["koszt"]} za sztukę' for item in history]
     manager.history_write()
-    return render_template('page.html', balance=balance, komunikat=komunikat, result=result)
+    return render_template('page.html', balance=balance, komunikat=komunikat, history=history)
 
 
 @app.route("/purchase", methods=["POST"])

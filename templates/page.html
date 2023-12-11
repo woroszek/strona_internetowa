@@ -21,6 +21,11 @@
         form input {
         color: black;
         font-weight: bold;
+        }
+        th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #DDD;
 }
 
 
@@ -91,10 +96,26 @@
 
     </div>
     <div class="container-fluid p-5 bg-dark text-white">
-        <h4 class="text-center">Aktualny stan magazynu:</h4>
-        {% for item in result %}
-        <li class="text-center">{{ item }}</li>
-        {% endfor %}
+        <h4 class="text-center">Aktualny stan magazynu:</h4><br>
+      <table style="width:100%">
+      <thead>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Ilość</th>
+      <th scope="col">Cena</th>
+      </thead>
+      <tbody>
+      <tr>
+        {% for item in history %}
+      <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1]["ilosc"] }}</td>
+        <td>{{ item[1]["koszt"] }}</td>
+      </tr>
+      {% endfor %}
+
+      </tbody>
+
+    </table>
     </div>
 
 

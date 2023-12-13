@@ -133,36 +133,42 @@ class Manager:
 manager = Manager()
 
 
-def history(manager):
+def history(od, do):
     if len(manager.history) > 0:
         print(f'Wykonano łącznie {len(manager.history)} operacji.')
         print('Możesz wybrać zakres operacji. ')
         print(f'Możliwy przedział to: 1 do {len(manager.history)}')
-        od = input("Wprowadź numer operacji od której pragniesz zaczać.")
+        od = od
         if od.isnumeric() is False or int(od) < 1 or int(od) > len(manager.history):
             print(f'Błędna wartość. Możliwy przedział to: 1 do {len(manager.history)}')
             print('Wyświetlam wyniki od operacji pierwszej.')
             od = 1
-        do = input("Wprowadź numer operacji na której pragniesz zakończyć.")
+        do = do
         if do.isnumeric() is False or int(do) > len(manager.history) or int(od) > int(do):
             print(f'Błędna wartość. Możliwy przedział to: 1 do {len(manager.history)}')
             print('Wyświetlam wyniki do samego końca.')
             do = int(len(manager.history))
-        manager.execute("history_number", od, do)
+        history_number(od, do)
     else:
         print("Historia wykonanych operacji jest pusta.")
 
 
-def history_number(manager, od, do, a=0):
+def history_number(od, do, a=0):
     od = int(od)
     do = int(do)
+    if int(od) < 1 or int(od) > len(manager.history):
+        od = 1
+    elif int(do) > len(manager.history) or int(od) > int(do):
+        do = int(len(manager.history))
+    history = []
     if od > 0:
         for i in manager.history:
             a = a + 1
             if a < od or a > do:
                 continue
-            print(f'Opercja numer: {a} to  {i}')
-            print('***************************************************')
+            history.append(f'Opercja numer: {a} to  {i}')
+    return history
+
 
 
 def warehouse_per_item(manager):
